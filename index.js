@@ -10,10 +10,10 @@ module.exports = (opts = {}) => {
       root.walkRules(rule => {
         rule.selectors = rule.selectors.map(selector => {
 
-        opts.forEach((prefix) => {
-            let regVar = new RegExp(String.raw`/\b:${prefix}(\w+)`, "g");
+          Array.forEach((opts), (prefix) => {
+            let regVar = new RegExp(String.raw`/\b${prefix}(\w+)`, "g");
             // Replace each prefix with the respective pseudo-class
-            selector = selector.replace(regVar, '.$1:' + prefix);
+            selector = selector.replace(regVar, ':$1');
             return selector;
           });
         });
